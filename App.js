@@ -54,5 +54,10 @@ const styles = StyleSheet.create({
    flexDirection: 'row',
    flexWrap: 'wrap'
 
+ },
+ imagewrap: {
+padding: 2,
+height: 120,
+width: (Dimensions.get('window').width / 2 ) - 2,
  }
 });
