@@ -15,8 +15,8 @@ export default class App extends React.Component {
       {title: 'The Wolf of Wall Street', img: require('./app/images/wolf.png')},
       {title: 'Django', img: require('./app/images/django.jpg')},
       {title: 'The Great Gatsby', img: require('./app/images/gatsby.jpg')},
-      {title: 'Django', img: require('./app/images/django.jpg')},
-      {title: 'The Great Gatsby', img: require('./app/images/gatsby.jpg')}
+      {title: 'The Departed', img: require('./app/images/departed.jpg')},
+      {title: 'Gangs of New York', img: require('./app/images/gangs.jpg')}
     ],
     imagesReference: [],
     text: '',
@@ -30,7 +30,7 @@ export default class App extends React.Component {
     this.setState({text: text});
     let imgArr = this.state.images;
 
-    for(var i = 0; i > imgArr.length; i++) {
+    for(var i = 0; i < imgArr.length; i++) {
       if (text === imgArr[i].title) {
         this.setState({ images: [imgArr[i] ] })
       }
@@ -38,6 +38,7 @@ export default class App extends React.Component {
 
     if(!text) {
       //Resets Search 
+      this.setState({ images: this.state.imagesReference})
     }
   }
 
