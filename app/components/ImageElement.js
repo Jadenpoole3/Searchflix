@@ -4,13 +4,13 @@ import { StyleSheet, AppRegistry, Image, } from 'react-native';
 export default class ImageElement extends React.Component {
   render() {
     return (
-     <Image source={this.props.imgsource} />
+     <Image source={this.props.imgsource} style={styles.image}/>
     );
   }
 }
 
 const styles = StyleSheet.create({
- container: {
+ image: {
      flex: 1,
      width: null,
      alignSelf: 'stretch'

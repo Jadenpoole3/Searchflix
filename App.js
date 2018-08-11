@@ -14,6 +14,8 @@ export default class App extends React.Component {
       {title: 'Revenant', img: require('./app/images/revenant.jpg')},
       {title: 'The Wolf of Wall Street', img: require('./app/images/wolf.png')},
       {title: 'Django', img: require('./app/images/django.jpg')},
+      {title: 'The Great Gatsby', img: require('./app/images/gatsby.jpg')},
+      {title: 'Django', img: require('./app/images/django.jpg')},
       {title: 'The Great Gatsby', img: require('./app/images/gatsby.jpg')}
     ],
     imagesReference: [],
@@ -23,6 +25,22 @@ export default class App extends React.Component {
   componentDidMount() {
     this.setState({ imagesReference: this.state.images})
   }
+
+  search (text)  {
+    this.setState({text: text});
+    let imgArr = this.state.images;
+
+    for(var i = 0; i > imgArr.length; i++) {
+      if (text === imgArr[i].title) {
+        this.setState({ images: [imgArr[i] ] })
+      }
+    }
+
+    if(!text) {
+      //Resets Search 
+    }
+  }
+
   render() {
 
     let images = this.state.images.map((val, key) => {
@@ -34,6 +52,10 @@ export default class App extends React.Component {
     })
     return (
       <View style={styles.container}>
+      <TextInput style={styles.textinput} underlineColor='transparent'
+      placeholder='search movie'
+      onChangeText={(text) => this.search(text)} value={this.state.text}
+      />
         <View style={styles.photogrid}> 
         {images}
         </View>
@@ -47,6 +69,14 @@ const styles = StyleSheet.create({
    flex: 1,
    backgroundColor: '#252525'
   
+ },
+
+ textinput: {
+  textAlign: 'center',
+  marginTop: 10,
+  marginBottom: 8,
+  padding: 10,
+  backgroundColor: '#fff'
  },
  photogrid: {
    flex: 1,
